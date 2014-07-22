@@ -1,17 +1,24 @@
 {
   "name": "utilitieskingston",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "main": "index.js",
+  "bin": "bin/utilitieskingston",
   "contributors": [
     {
       "name": "Charles P Clermont",
       "email": "charles.pclermont@gmail.com"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aj0strow/utilitieskingston.git"
+  },
   "dependencies": {
     "request": "^2.37.0",
     "moment": "^2.7.0",
     "cheerio": "^0.17.0",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "commander": "^2.3.0"
   },
   "devDependencies": {
     "mocha": "^1.20.1"

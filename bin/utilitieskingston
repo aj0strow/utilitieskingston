@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+var moment = require('moment')
+var cmd = require('commander')
+
+cmd.option('-u, --username <s>', 'Email address')
+cmd.option('-p, --password <s>', 'Password')
+cmd.parse(process.argv)
+
+var username = cmd.username || process.env['UTILITIESKINGSTON_USERNAME']
+var password = cmd.password || process.env['UTILITIESKINGSTON_PASSWORD']
+
+var scrape = require('..')(username, password)
+var accountId = cmd.args.shift()
+var start = moment().startOf('week').subtract(1, 'week').toDate()
+var stop = moment(start).endOf('week').toDate()
+
+scrape(accountId, { from: start, to: stop }, function (e, csv) {
+  if (e) {
+    console.error(e)
+    process.exit(1)
+  }
+  process.stdout.write(csv)
+})
